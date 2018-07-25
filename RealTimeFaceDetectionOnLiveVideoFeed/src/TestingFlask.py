@@ -5,7 +5,7 @@ from scipy.misc.pilutil import imresize
 import numpy as np
 from flask import Flask,jsonify, make_response
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 
 EMOTIONS =['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise','Neutral']
@@ -13,7 +13,7 @@ EMOTIONS =['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise','Neutral']
 cascadeClassifier = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 height = width = 20
 
-#@app.route("/")
+@app.route("/")
 def detectfaceemotion():
         cap = cv2.VideoCapture(0)
 
@@ -54,6 +54,6 @@ def detect_face(image):
 
 #detectfaceemotion()
 if __name__ == "__main__":
-        detectfaceemotion()
+        app.run(port=5001)
 	#app.run()
 
